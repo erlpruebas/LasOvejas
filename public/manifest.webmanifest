@@ -3,13 +3,13 @@
   "short_name": "Ovejas",
   "description": "Guía a las ovejas a través de niveles con obstáculos. PWA offline.",
   "lang": "es",
-  "start_url": "/",
+  "start_url": "/LasOvejas/",
   "display": "standalone",
   "background_color": "#f7fbff",
   "theme_color": "#63C5DA",
   "icons": [
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/LasOvejas/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/LasOvejas/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
 
