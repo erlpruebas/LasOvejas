@@ -1,6 +1,6 @@
 import { Entity } from '../core/Entity';
 import { svgEl } from '../core/SVG';
-import { Vec2 } from '../core/types';
+// import { Vec2 } from '../core/types';
 
 export class Shepherd extends Entity {
   hat: SVGElement;

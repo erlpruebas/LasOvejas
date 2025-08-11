@@ -3,6 +3,15 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   base: '/LasOvejas/',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',

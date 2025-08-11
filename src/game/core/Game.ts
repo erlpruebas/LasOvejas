@@ -1,6 +1,6 @@
-import { svgEl, setAttrs } from './SVG';
-import { vec, Vec2, dist, add, sub, norm, mul } from './types';
-import { Entity, Obstacle } from './Entity';
+import { svgEl } from './SVG';
+import { Vec2, dist, add, sub, norm, mul } from './types';
+import { Obstacle } from './Entity';
 import { Shepherd } from '../entities/Shepherd';
 import { Sheep } from '../entities/Sheep';
 import { Dog } from '../entities/Dog';
@@ -29,7 +29,7 @@ export class Game {
 
   private ts = performance.now();
   private store: GameStore;
-  private followUpdateTimer = 0; // para actualizar factor cada 10s
+  // private followUpdateTimer = 0; // para actualizar factor cada 10s
   private sfx = new Sfx();
   private paused = false;
   private initialSheepPositions: Vec2[] = [];
@@ -214,22 +214,21 @@ export class Game {
   }
 
   private resize() {
-    const rect = this.host.getBoundingClientRect();
     this.svg.style.width = '100%';
     this.svg.style.height = '100%';
     this.svg.style.display = 'block';
   }
 
-  private spawnAngryBolt(p: Vec2) {
-    const g = svgEl('g');
-    const bolt = svgEl('path', { d: 'M 0 -8 L 6 -2 L 2 -2 L 8 6 L -2 2 L 2 2 Z', fill: '#ff6b6b', stroke: '#bf3b39', 'stroke-width': 1 });
-    g.setAttribute('transform', `translate(${p.x},${p.y - 16})`);
-    this.fxLayer.append(g);
-    g.append(bolt);
-    setTimeout(() => g.remove(), 350);
-    // sonido de balido
-    this.sfx.bleat();
-  }
+  // private spawnAngryBolt(p: Vec2) {
+  //   const g = svgEl('g');
+  //   const bolt = svgEl('path', { d: 'M 0 -8 L 6 -2 L 2 -2 L 8 6 L -2 2 L 2 2 Z', fill: '#ff6b6b', stroke: '#bf3b39', 'stroke-width': 1 });
+  //   g.setAttribute('transform', `translate(${p.x},${p.y - 16})`);
+  //   this.fxLayer.append(g);
+  //   g.append(bolt);
+  //   setTimeout(() => g.remove(), 350);
+  //   // sonido de balido
+  //   this.sfx.bleat();
+  // }
 
   private updateHudWhistles() {
     const el = document.getElementById('whistles');

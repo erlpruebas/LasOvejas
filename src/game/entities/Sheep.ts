@@ -1,6 +1,6 @@
 import { Entity, Obstacle } from '../core/Entity';
 import { svgEl } from '../core/SVG';
-import { Vec2, dist, sub, norm, mul, add, clamp, len } from '../core/types';
+import { Vec2, sub, clamp, len } from '../core/types';
 import { Config } from '../core/Config';
 import { Sfx } from '../core/Audio';
 

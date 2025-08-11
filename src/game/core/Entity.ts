@@ -1,4 +1,4 @@
-import { Vec2, vec, add, sub, mul, len, norm, clamp } from './types';
+import { Vec2, vec, add, sub, mul, len, norm } from './types';
 
 export interface Obstacle {
   kind: 'stone' | 'tree' | 'hole';

@@ -1,6 +1,6 @@
 import { Entity, Obstacle } from '../core/Entity';
 import { svgEl } from '../core/SVG';
-import { Vec2 } from '../core/types';
+// import { Vec2 } from '../core/types';
 
 export class Dog extends Entity {
   selected = false;
