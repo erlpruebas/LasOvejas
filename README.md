@@ -1,4 +1,3 @@
-#
 # 🐑 Ovejas: Pastor y Rebaño
 
 Un juego web donde guías a las ovejas a través de niveles con obstáculos. Desarrollado con TypeScript y Vite.
