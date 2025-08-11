@@ -2,6 +2,8 @@
 
 Un juego web donde guías a las ovejas a través de niveles con obstáculos. Desarrollado con TypeScript y Vite.
 
+**Estado:** En proceso de despliegue automático.
+
 ## 🎮 Jugar
 
 El juego está disponible en: [https://erlpruebas.github.io/LasOvejas/](https://erlpruebas.github.io/LasOvejas/)
