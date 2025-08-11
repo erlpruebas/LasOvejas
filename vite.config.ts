@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/LasOvejas/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -14,14 +15,14 @@ export default defineConfig({
         theme_color: '#63C5DA',
         background_color: '#f7fbff',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/LasOvejas/',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
-        navigateFallback: '/index.html',
+        navigateFallback: '/LasOvejas/index.html',
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === 'document' || request.destination === 'script' || request.destination === 'style' || request.destination === 'image' || request.destination === 'font',
