@@ -7,6 +7,8 @@ import { Config } from './game/core/Config';
 registerSW({ immediate: true });
 
 const stageHost = document.getElementById('stage') as HTMLDivElement;
+console.log('Stage host found:', stageHost);
+
 const moneyHud = document.getElementById('money')!;
 const sheepHud = document.getElementById('sheepCount')!;
 const levelHud = document.getElementById('level')!;
@@ -15,7 +17,10 @@ const pauseBtn = document.getElementById('btn-pause') as HTMLButtonElement;
 const levelsContainer = document.getElementById('levels')!;
 
 const store = new GameStore();
+console.log('GameStore created');
+
 const levels = createLevels();
+console.log('Levels created:', Object.keys(levels));
 
 // UI tienda
 const btnBuyDog = document.getElementById('btn-buy-dog') as HTMLButtonElement;
@@ -43,12 +48,17 @@ Object.values(LevelId).forEach((id) => {
   levelsContainer.appendChild(b);
 });
 
+console.log('Creating game instance...');
 let game = new Game(stageHost, store);
+console.log('Game instance created');
 
 function loadLevel(id: LevelId) {
+  console.log('Loading level:', id);
   const config = levels[id];
+  console.log('Level config:', config);
   levelHud.textContent = `Nivel ${config.meta.number}`;
   game.loadLevel(config);
+  console.log('Level loaded in game');
   // actualizar HUD ovejas
   sheepHud.textContent = `🐑 ${game.getSheepCount()}`;
 }
@@ -65,14 +75,23 @@ document.getElementById('helpBtn')!.addEventListener('click', () => {
 
 // Iniciar
 console.log('Starting game...');
-loadLevel(LevelId.Level1);
-updateHud();
-console.log('Game started successfully');
+try {
+  loadLevel(LevelId.Level1);
+  updateHud();
+  console.log('Game started successfully');
 
-// Ocultar indicador de carga
-const loadingEl = document.getElementById('loading');
-if (loadingEl) {
-  loadingEl.style.display = 'none';
+  // Ocultar indicador de carga
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) {
+    loadingEl.style.display = 'none';
+  }
+} catch (error) {
+  console.error('Error starting game:', error);
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) {
+    loadingEl.textContent = 'Error al cargar el juego. Revisa la consola.';
+    loadingEl.style.color = '#ff6b6b';
+  }
 }
 
 

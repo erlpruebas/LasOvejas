@@ -35,40 +35,47 @@ export class Game {
   private initialSheepPositions: Vec2[] = [];
 
   constructor(host: HTMLElement, store: GameStore) {
-    this.host = host;
-    this.store = store;
-    console.log('Game constructor - host:', host);
-    
-    this.svg = svgEl('svg', { class: 'game-svg', viewBox: `0 0 ${this.W} ${this.H}`, 'aria-label': 'Juego Ovejas' }) as SVGSVGElement;
-    this.scene = svgEl('g');
-    this.obstaclesLayer = svgEl('g');
-    this.entitiesLayer = svgEl('g');
-    this.fxLayer = svgEl('g');
-    this.scene.append(this.obstaclesLayer, this.entitiesLayer, this.fxLayer);
-    this.svg.append(this.scene);
-    this.host.innerHTML = '';
-    this.host.append(this.svg);
-    console.log('Game constructor - SVG created and appended');
+    try {
+      this.host = host;
+      this.store = store;
+      console.log('Game constructor - host:', host);
+      
+      this.svg = svgEl('svg', { class: 'game-svg', viewBox: `0 0 ${this.W} ${this.H}`, 'aria-label': 'Juego Ovejas' }) as SVGSVGElement;
+      this.scene = svgEl('g');
+      this.obstaclesLayer = svgEl('g');
+      this.entitiesLayer = svgEl('g');
+      this.fxLayer = svgEl('g');
+      this.scene.append(this.obstaclesLayer, this.entitiesLayer, this.fxLayer);
+      this.svg.append(this.scene);
+      this.host.innerHTML = '';
+      this.host.append(this.svg);
+      console.log('Game constructor - SVG created and appended');
 
-    this.setupDefs();
-    this.setupInput();
-    this.tick = this.tick.bind(this);
-    requestAnimationFrame(this.tick);
-    window.addEventListener('resize', () => this.resize());
-    this.resize();
+      this.setupDefs();
+      this.setupInput();
+      this.tick = this.tick.bind(this);
+      requestAnimationFrame(this.tick);
+      window.addEventListener('resize', () => this.resize());
+      this.resize();
+      console.log('Game constructor - completed successfully');
+    } catch (error) {
+      console.error('Error in Game constructor:', error);
+      throw error;
+    }
   }
 
   loadLevel(level: LevelConfig) {
-    console.log('Loading level:', level.id);
-    this.level = level;
-    this.goal = { ...level.goal };
-    this.obstacles = level.obstacles.map(o => ({ ...o }));
-    this.entitiesLayer.innerHTML = '';
-    this.obstaclesLayer.innerHTML = '';
-    this.fxLayer.innerHTML = '';
-    this.sheep = [];
-    this.dogs = [];
-    this.selectedDog = null;
+    try {
+      console.log('Loading level:', level.id);
+      this.level = level;
+      this.goal = { ...level.goal };
+      this.obstacles = level.obstacles.map(o => ({ ...o }));
+      this.entitiesLayer.innerHTML = '';
+      this.obstaclesLayer.innerHTML = '';
+      this.fxLayer.innerHTML = '';
+      this.sheep = [];
+      this.dogs = [];
+      this.selectedDog = null;
 
     // render goal (corral/cobertizo)
     const goalG = svgEl('g');
@@ -122,6 +129,10 @@ export class Game {
       this.fxLayer.append(veil);
     }
     console.log('Level loaded successfully. Sheep count:', this.sheep.length);
+    } catch (error) {
+      console.error('Error loading level:', error);
+      throw error;
+    }
   }
 
   spawnDog() {
