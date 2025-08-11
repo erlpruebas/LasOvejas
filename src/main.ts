@@ -64,8 +64,16 @@ document.getElementById('helpBtn')!.addEventListener('click', () => {
 });
 
 // Iniciar
+console.log('Starting game...');
 loadLevel(LevelId.Level1);
 updateHud();
+console.log('Game started successfully');
+
+// Ocultar indicador de carga
+const loadingEl = document.getElementById('loading');
+if (loadingEl) {
+  loadingEl.style.display = 'none';
+}
 
 
 // Panel de comandos (atajos de teclado)

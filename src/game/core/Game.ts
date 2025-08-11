@@ -37,6 +37,8 @@ export class Game {
   constructor(host: HTMLElement, store: GameStore) {
     this.host = host;
     this.store = store;
+    console.log('Game constructor - host:', host);
+    
     this.svg = svgEl('svg', { class: 'game-svg', viewBox: `0 0 ${this.W} ${this.H}`, 'aria-label': 'Juego Ovejas' }) as SVGSVGElement;
     this.scene = svgEl('g');
     this.obstaclesLayer = svgEl('g');
@@ -46,6 +48,7 @@ export class Game {
     this.svg.append(this.scene);
     this.host.innerHTML = '';
     this.host.append(this.svg);
+    console.log('Game constructor - SVG created and appended');
 
     this.setupDefs();
     this.setupInput();
@@ -56,6 +59,7 @@ export class Game {
   }
 
   loadLevel(level: LevelConfig) {
+    console.log('Loading level:', level.id);
     this.level = level;
     this.goal = { ...level.goal };
     this.obstacles = level.obstacles.map(o => ({ ...o }));
@@ -95,8 +99,8 @@ export class Game {
 
     // entities
     this.shepherd = new Shepherd();
-    // Pastor arranca en la meta
-    this.shepherd.setPosition({ x: this.goal.x, y: this.goal.y });
+    // Pastor arranca en la posición inicial del nivel
+    this.shepherd.setPosition(level.shepherdStart);
     this.entitiesLayer.append(this.shepherd.group);
 
     const followFn = () => this.shepherd.position;
@@ -117,6 +121,7 @@ export class Game {
       const veil = svgEl('rect', { x: 0, y: 0, width: this.W, height: this.H, fill: 'rgba(255,255,255,.65)' });
       this.fxLayer.append(veil);
     }
+    console.log('Level loaded successfully. Sheep count:', this.sheep.length);
   }
 
   spawnDog() {
@@ -198,7 +203,10 @@ export class Game {
   }
 
   private resize() {
-    // ViewBox already handles it; keep responsive
+    const rect = this.host.getBoundingClientRect();
+    this.svg.style.width = '100%';
+    this.svg.style.height = '100%';
+    this.svg.style.display = 'block';
   }
 
   private spawnAngryBolt(p: Vec2) {
