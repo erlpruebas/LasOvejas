@@ -36,13 +36,11 @@ npm run dev
 
 - **TypeScript** - Lenguaje de programación
 - **Vite** - Herramienta de build
-- **PWA** - Progressive Web App con soporte offline
 - **SVG** - Gráficos vectoriales para el juego
 
 ## 📱 Características
 
 - ✅ Juego completamente funcional
-- ✅ Soporte offline (PWA)
 - ✅ Diseño responsive
 - ✅ Múltiples niveles
 - ✅ Sistema de tienda

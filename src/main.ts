@@ -1,10 +1,7 @@
-// import { registerSW } from 'virtual:pwa-register';
 import { Game } from './game/core/Game';
 import { createLevels, LevelId } from './game/levels/levels';
 import { GameStore } from './game/ui/Store';
 import { Config } from './game/core/Config';
-
-// registerSW({ immediate: true });
 
 const stageHost = document.getElementById('stage') as HTMLDivElement;
 console.log('Stage host found:', stageHost);
