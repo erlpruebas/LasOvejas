@@ -1,1 +1,0 @@
-{"root":["./src/main.ts","./src/game/core/audio.ts","./src/game/core/config.ts","./src/game/core/entity.ts","./src/game/core/game.ts","./src/game/core/level.ts","./src/game/core/svg.ts","./src/game/core/types.ts","./src/game/entities/dog.ts","./src/game/entities/sheep.ts","./src/game/entities/shepherd.ts","./src/game/levels/levels.ts","./src/game/ui/store.ts"],"version":"5.9.2"}
